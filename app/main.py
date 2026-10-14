@@ -7,6 +7,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="CivicFix API")
 
+@app.get("/")
+def root():
+    return {
+        "name": "CivicFix API",
+        "status": "running",
+        "docs": "/docs",
+        "health": "/api/health",
+    }
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
